@@ -283,3 +283,143 @@ This provides an important operational principle:
 `Requested Change ≠ Verified Access State`
 
 An IAM change should be considered complete only after the resulting identity and entitlement state has been validated.
+## Enterprise Scalability
+
+The implementation in this case study uses assigned security groups and manually executed lifecycle changes so that each identity state transition can be observed and validated directly.
+
+That approach is appropriate for demonstrating control behavior, but it does not represent the most scalable operating model for a large enterprise.
+
+As Northstar Technologies grows from hundreds to thousands of identities, the architecture should evolve toward greater automation and governance.
+
+### Scaling Considerations
+
+A larger implementation could introduce:
+
+- Authoritative identity data sourced from HR or another system of record.
+- Automated Joiner-Mover-Leaver provisioning workflows.
+- Attribute-driven group membership where licensing, data quality, and business rules support it.
+- Standardized access packages or entitlement models for common job functions.
+- Periodic access reviews to detect stale or excessive access.
+- Automated offboarding workflows that coordinate account disablement, entitlement removal, and downstream application access.
+- Microsoft Graph or PowerShell automation for repeatable identity administration and reporting.
+- Privileged Identity Management and time-bound privilege where licensing permits.
+- Logging and monitoring to validate lifecycle activity and investigate access anomalies.
+
+### Why Automation Matters
+
+Manual identity administration becomes increasingly difficult to manage as user volume, application count, organizational complexity, and access relationships grow.
+
+At enterprise scale, the main risk is not only administrative effort. It is **inconsistency**.
+
+Examples include:
+
+- A mover receiving new access but retaining obsolete access.
+- A leaver being disabled in Microsoft Entra ID while downstream application access remains active.
+- Different administrators applying different lifecycle procedures.
+- Incomplete entitlement removal because access paths are not centrally visible.
+- Identity attributes becoming inconsistent with actual authorization state.
+
+Automation can reduce these risks by applying repeatable lifecycle logic and producing consistent evidence of what changed.
+
+### Assigned vs. Dynamic Membership
+
+This implementation uses **Assigned** security-group membership.
+
+With assigned membership, an administrator or automation process explicitly adds or removes identities from a group.
+
+Dynamic membership can instead evaluate identity attributes against membership rules and automatically adjust group membership.
+
+For example, a future design could evaluate an authoritative Department attribute and automatically maintain departmental groups.
+
+However, dynamic membership does not eliminate the need for IAM engineering controls.
+
+The effectiveness of an attribute-driven model depends on:
+
+- Reliable source data.
+- Correct rule logic.
+- Clear ownership of identity attributes.
+- Testing before production deployment.
+- Monitoring for unintended membership changes.
+- Governance around exceptions.
+
+A poorly governed dynamic rule can automate incorrect access just as efficiently as a well-designed rule can automate correct access.
+
+### Target-State Lifecycle Model
+
+A more mature enterprise implementation could follow this pattern:
+
+`Authoritative Source → Identity Provisioning → Attribute Evaluation → Entitlement Assignment → Validation → Monitoring`
+
+For offboarding:
+
+`Termination Event → Disable Authentication → Revoke Sessions → Remove Entitlements → Validate → Retain/Delete According to Policy`
+
+The core principle remains the same regardless of scale:
+
+**Identity state and access state must remain aligned with the current business requirement.**
+## SC-300 Alignment
+
+This implementation reinforces identity concepts covered within the Microsoft Identity and Access Administrator (SC-300) domain, including:
+
+- Managing Microsoft Entra workforce identities.
+- Creating and managing security groups.
+- Managing user and group membership.
+- Understanding identity attributes and authorization relationships.
+- Managing Microsoft Entra administrative roles.
+- Applying least-privilege principles.
+- Supporting Joiner-Mover-Leaver lifecycle operations.
+- Validating identity and access state after administrative changes.
+
+The certification concepts provide the platform foundation; this case study applies those concepts to a structured identity engineering scenario.
+
+## Implementation Evidence
+
+Configuration evidence was captured throughout the implementation to demonstrate both the configured state and lifecycle transitions.
+
+Evidence includes:
+
+- Isolated Microsoft Entra environment used for the case study.
+- Provisioned fictional workforce identities.
+- Department security-group structure.
+- Finance group membership before the mover event.
+- Sales group membership after the mover event.
+- Enabled account state before the leaver workflow.
+- Disabled account and entitlement removal after the leaver workflow.
+- Delegated User Administrator role assignment.
+- Final identity and entitlement validation.
+
+Screenshots published with this repository are intended to support specific implementation claims rather than serve as configuration decoration.
+
+## Evidence Sanitization
+
+Before publication, screenshots are reviewed to remove or obscure information that is not required to demonstrate the IAM control.
+
+The following information is excluded from published evidence where present:
+
+- Personal or university-associated account information.
+- Tenant identifiers.
+- Object identifiers.
+- Subscription identifiers.
+- Authentication information.
+- Passwords or temporary passwords.
+- Access tokens or secrets.
+- Session-specific or unnecessary URL identifiers.
+- Other personally identifiable information.
+
+Fictional Northstar Technologies workforce identities may remain visible where they are necessary to demonstrate the implemented lifecycle scenario.
+
+## Engineering Observations
+
+Several operational principles were reinforced during implementation:
+
+1. **Identity attributes and entitlements are separate control layers.** Updating a Department attribute does not automatically modify assigned security-group membership.
+
+2. **Provisioning new access is only part of a mover workflow.** Obsolete access must also be identified and revoked to prevent privilege accumulation.
+
+3. **Authentication termination and authorization cleanup are different controls.** Disabling a leaver account prevents new authentication, while session revocation and entitlement removal address additional access paths.
+
+4. **Business access and administrative privilege should be managed separately.** Department security-group membership does not substitute for Microsoft Entra directory-role assignment.
+
+5. **Configuration should be followed by validation.** A successful administrative action does not by itself prove that the resulting access state matches the business requirement.
+
+6. **Manual lifecycle administration does not scale indefinitely.** Larger environments require stronger automation, authoritative identity data, governance, and monitoring to maintain consistent access state.
