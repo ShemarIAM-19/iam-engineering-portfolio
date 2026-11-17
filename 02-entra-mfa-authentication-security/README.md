@@ -124,23 +124,43 @@ If MFA does not work as expected, investigate:
 - Whether a fresh sign-in triggers the expected challenge.
 - Whether sign-in logs and licensing permit detailed validation.
 
-## Technical Evidence & Illustrations
+## Implementation Illustrations
 
-### Uploaded AI Illustrations
+The five images below are **AI-generated reconstructions**, provided for visual context and presentation. They are **not original Microsoft Entra screenshots** and must not be used as verification of any policy, registration, or sign-in outcome. The original lab observations are documented in the sections above.
 
-The project currently includes an uploaded ZIP of five **AI-reimagined Microsoft-style interface illustrations**. These are for visual presentation only: they are **not authentic Microsoft Entra screenshots and must not be interpreted as evidence of the lab's configuration or results**. AI-generated details may differ from the actual environment.
+### 01 — Authentication Method Policies
 
-**[Download the five AI illustrations (ZIP)](https://github.com/ShemarIAM-19/iam-engineering-portfolio/blob/main/02-entra-mfa-authentication-security/screenshots/lab02-ai-reimagined-5-images%20(3).zip)**
+![AI illustration of authentication method policies](screenshots/01-authentication-method-policies.png)
 
-The ZIP is currently stored under `screenshots/` as uploaded. GitHub does not automatically unpack it, so the five images are not individually previewable in the repository yet. For clarity, the recommended final location for extracted images is `illustrations/`.
+### 02 — Recent Sign-in Activity
 
-### Authentic Lab Evidence — Not Yet Published
+![AI illustration of recent sign-in activity](screenshots/02-recent-sign-in-activity.png)
 
-The lab's original redacted screenshots are separate from the AI illustrations and are not yet published individually in this repository. Authentic evidence should be added only after checking that credentials, QR codes, IP addresses, and precise location information are not exposed.
+### 03 — Security Defaults
 
-The documented observations in this README reflect the lab workflow, **not** proof supplied by the AI-generated images.
+![AI illustration of Security Defaults](screenshots/03-security-defaults.png)
 
-**Security note:** Never publish MFA enrollment QR codes, passwords, IP addresses, or precise location details.
+### 04 — User Authentication Methods
+
+![AI illustration of Priya Shah authentication methods](screenshots/04-priya-authentication-methods.png)
+
+### 05 — Additional Sign-in Activity View
+
+![AI illustration of an alternate recent activity view](screenshots/05-recent-activity-alternative.png)
+
+All five illustrations are now individually available in the [image folder](screenshots/). An earlier ZIP archive remains in that folder for convenience.
+
+## Implementation Evidence & Sanitization
+
+The real lab observations include Security Defaults already enabled, authentication policy review, Microsoft Authenticator enrollment for a fictional test identity, a number-matching MFA challenge, and successful sign-in entries.
+
+**Authentic screenshots are not yet published individually in this repository.** The illustrations above do not establish these outcomes. Original evidence should be uploaded only after verifying that all credentials, enrollment QR codes, IP addresses, and other sensitive identifiers have been removed or masked.
+
+This distinction is important for portfolio credibility: **documented implementation claims and AI-generated explanatory visuals are separate artifacts**.
+
+## SC-300 Alignment
+
+This lab reinforces Microsoft Identity and Access Administrator concepts including authentication method policies, multifactor authentication registration, tenant baseline security controls, sign-in validation, and licensing considerations for Conditional Access and reporting.
 
 ## Key Takeaways
 
