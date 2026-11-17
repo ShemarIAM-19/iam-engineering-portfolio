@@ -124,17 +124,23 @@ If MFA does not work as expected, investigate:
 - Whether a fresh sign-in triggers the expected challenge.
 - Whether sign-in logs and licensing permit detailed validation.
 
-## Technical Evidence
+## Technical Evidence & Illustrations
 
-Sanitized screenshots captured during this lab are prepared in the companion evidence package. Upload them to a `screenshots/` directory after reviewing each redaction.
+### Uploaded AI Illustrations
 
-- `03-authentication-method-policies.png` — authentication policy review
-- `05-authentication-methods-before.png` — pre-enrollment user state
-- `09-authenticator-registered.png` — registered Microsoft Authenticator
-- `10-mfa-number-matching-challenge.png` — MFA challenge
-- `11-sign-in-activity.png` — recent sign-in activity
+The project currently includes an uploaded ZIP of five **AI-reimagined Microsoft-style interface illustrations**. These are for visual presentation only: they are **not authentic Microsoft Entra screenshots and must not be interpreted as evidence of the lab's configuration or results**. AI-generated details may differ from the actual environment.
 
-**Security note:** Enrollment QR codes, passwords, IP addresses, and precise locations should never be published as portfolio evidence.
+**[Download the five AI illustrations (ZIP)](https://github.com/ShemarIAM-19/iam-engineering-portfolio/blob/main/02-entra-mfa-authentication-security/screenshots/lab02-ai-reimagined-5-images%20(3).zip)**
+
+The ZIP is currently stored under `screenshots/` as uploaded. GitHub does not automatically unpack it, so the five images are not individually previewable in the repository yet. For clarity, the recommended final location for extracted images is `illustrations/`.
+
+### Authentic Lab Evidence — Not Yet Published
+
+The lab's original redacted screenshots are separate from the AI illustrations and are not yet published individually in this repository. Authentic evidence should be added only after checking that credentials, QR codes, IP addresses, and precise location information are not exposed.
+
+The documented observations in this README reflect the lab workflow, **not** proof supplied by the AI-generated images.
+
+**Security note:** Never publish MFA enrollment QR codes, passwords, IP addresses, or precise location details.
 
 ## Key Takeaways
 
