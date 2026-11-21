@@ -148,7 +148,7 @@ The five images below are **AI-generated reconstructions**, provided for visual 
 
 ![AI illustration of an alternate recent activity view](screenshots/05-recent-activity-alternative.png)
 
-All five illustrations are now individually available in the [image folder](screenshots/). An earlier ZIP archive remains in that folder for convenience.
+All five illustrations are individually available in the [image folder](screenshots/).
 
 ## Implementation Evidence & Sanitization
 
